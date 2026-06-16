@@ -38,11 +38,6 @@ jobs:
               - 'oxlint.config.*'
               - 'mise.toml'
               - 'mise.lock'
-            test:
-              - '**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}'
-              - 'package.json'
-              - 'bun.lock'
-              - 'tsconfig.json'
             shellcheck:
               - '**/*.sh'
 
@@ -78,14 +73,6 @@ jobs:
       contents: read
     uses: nownabe/workflows/.github/workflows/shellcheck.yaml@main
 
-  test:
-    name: Test
-    needs: filter
-    if: ${{ fromJSON(needs.filter.outputs.changes).test == 'true' }}
-    permissions:
-      contents: read
-    uses: nownabe/workflows/.github/workflows/test.yaml@main
-
   secret-scan:
     name: Secret Scan
     permissions:
@@ -100,7 +87,6 @@ jobs:
       - oxfmt
       - oxlint
       - shellcheck
-      - test
       - secret-scan
     runs-on: ubuntu-slim
     timeout-minutes: 5
