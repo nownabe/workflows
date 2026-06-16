@@ -92,8 +92,8 @@ jobs:
       contents: read
     uses: nownabe/workflows/.github/workflows/secret-scan.yaml@main
 
-  status-check:
-    name: Pull Request Status Check
+  result:
+    name: Result
     if: always()
     needs:
       - github-workflow
