@@ -1,0 +1,113 @@
+name: Pull Request Checks
+
+on:
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  filter:
+    name: Filter
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      changes: ${{ toJSON(steps.filter.outputs) }}
+    steps:
+      - id: filter
+        uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d
+        with:
+          filters: |
+            github_workflow:
+              - '.github/workflows/**'
+            oxfmt:
+              - '**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}'
+              - '**/*.{json,jsonc,json5}'
+              - '**/*.{css,scss,less}'
+              - '**/*.{yaml,yml,toml}'
+              - '**/*.{html,vue,graphql}'
+              - '**/*.{md,mdx}'
+              - '.oxfmtrc*'
+              - 'mise.toml'
+              - 'mise.lock'
+            oxlint:
+              - '**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}'
+              - '.oxlintrc*'
+              - 'oxlint.config.*'
+              - 'mise.toml'
+              - 'mise.lock'
+            test:
+              - '**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}'
+              - 'package.json'
+              - 'bun.lock'
+              - 'tsconfig.json'
+            shellcheck:
+              - '**/*.sh'
+
+  github-workflow:
+    name: GitHub Workflow
+    needs: filter
+    if: ${{ fromJSON(needs.filter.outputs.changes).github_workflow == 'true' }}
+    permissions:
+      contents: read
+    uses: nownabe/workflows/.github/workflows/github-workflow.yaml@main
+
+  oxfmt:
+    name: oxfmt
+    needs: filter
+    if: ${{ fromJSON(needs.filter.outputs.changes).oxfmt == 'true' }}
+    permissions:
+      contents: read
+    uses: nownabe/workflows/.github/workflows/oxfmt.yaml@main
+
+  oxlint:
+    name: oxlint
+    needs: filter
+    if: ${{ fromJSON(needs.filter.outputs.changes).oxlint == 'true' }}
+    permissions:
+      contents: read
+    uses: nownabe/workflows/.github/workflows/oxlint.yaml@main
+
+  shellcheck:
+    name: shellcheck
+    needs: filter
+    if: ${{ fromJSON(needs.filter.outputs.changes).shellcheck == 'true' }}
+    permissions:
+      contents: read
+    uses: nownabe/workflows/.github/workflows/shellcheck.yaml@main
+
+  test:
+    name: Test
+    needs: filter
+    if: ${{ fromJSON(needs.filter.outputs.changes).test == 'true' }}
+    permissions:
+      contents: read
+    uses: nownabe/workflows/.github/workflows/test.yaml@main
+
+  secret-scan:
+    name: Secret Scan
+    permissions:
+      contents: read
+    uses: nownabe/workflows/.github/workflows/secret-scan.yaml@main
+
+  result:
+    name: Result
+    if: always()
+    needs:
+      - github-workflow
+      - oxfmt
+      - oxlint
+      - shellcheck
+      - test
+      - secret-scan
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Check job results
+        env:
+          HAS_FAILURE: ${{ contains(needs.*.result, 'failure') }}
+          HAS_CANCELLED: ${{ contains(needs.*.result, 'cancelled') }}
+        run: '[[ "$HAS_FAILURE" == "false" && "$HAS_CANCELLED" == "false" ]]'
