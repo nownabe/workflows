@@ -6,8 +6,8 @@
 "aqua:trufflesecurity/trufflehog" = "3.95.5"
 "aqua:nodejs/node" = "24.16.0" # runtime for the npm-backed tools below
 # aqua has native binaries (oxc apps_v) but our pinned mise's baked registry can't resolve them yet, so use npm
-"npm:oxlint" = "1.70.0"
-"npm:oxfmt" = "0.55.0"
+"npm:oxlint" = "1.69.0"
+"npm:oxfmt" = "0.54.0"
 
 [settings]
 lockfile = true

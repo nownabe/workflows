@@ -339,9 +339,9 @@ url = "https://github.com/zizmorcore/zizmor/releases/download/v1.25.2/zizmor-x86
 provenance = "github-attestations"
 
 [[tools."npm:oxfmt"]]
-version = "0.55.0"
+version = "0.54.0"
 backend = "npm:oxfmt"
 
 [[tools."npm:oxlint"]]
-version = "1.70.0"
+version = "1.69.0"
 backend = "npm:oxlint"
