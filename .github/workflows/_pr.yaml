@@ -6,8 +6,8 @@ on:
 permissions: {}
 
 jobs:
-  pr:
-    name: PR
+  common-checks:
+    name: Common Checks
     permissions:
       contents: read
       pull-requests: read
@@ -17,7 +17,7 @@ jobs:
     name: Result
     if: always()
     needs:
-      - pr
+      - common-checks
     runs-on: ubuntu-slim
     timeout-minutes: 5
     permissions: {}
