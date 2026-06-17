@@ -21,8 +21,9 @@
   automerge: true,
   platformAutomerge: true,
 
-  // Wait 7 days after publish before creating PRs to avoid compromised packages
-  minimumReleaseAge: "7 days",
+  // Wait before creating PRs to avoid compromised packages
+  // Matches mise.toml's minimum_release_age ("3d")
+  minimumReleaseAge: "3 days",
 
   // Vulnerability fix PRs should be created immediately and prioritized
   vulnerabilityAlerts: {
