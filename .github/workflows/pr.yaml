@@ -30,14 +30,10 @@ jobs:
               - '**/*.{html,vue,graphql}'
               - '**/*.{md,mdx}'
               - '.oxfmtrc*'
-              - 'mise.toml'
-              - 'mise.lock'
             oxlint:
               - '**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}'
               - '.oxlintrc*'
               - 'oxlint.config.*'
-              - 'mise.toml'
-              - 'mise.lock'
             shellcheck:
               - '**/*.sh'
 
