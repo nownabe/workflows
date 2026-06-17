@@ -17,6 +17,8 @@ concurrency:
 jobs:
   release-please:
     name: Release Please
+    # The app credentials are stored as secrets on the "release" environment.
+    environment: release
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
