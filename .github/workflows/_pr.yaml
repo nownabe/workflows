@@ -11,4 +11,19 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    uses: ./.github/workflows/pr.yaml
+    uses: nownabe/workflows/.github/workflows/pr.yaml@a873b3268351d80a1ef2ec1e71bf13022f597964 # main
+
+  result:
+    name: Result
+    if: always()
+    needs:
+      - pr
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Check job results
+        env:
+          HAS_FAILURE: ${{ contains(needs.*.result, 'failure') }}
+          HAS_CANCELLED: ${{ contains(needs.*.result, 'cancelled') }}
+        run: '[[ "$HAS_FAILURE" == "false" && "$HAS_CANCELLED" == "false" ]]'
