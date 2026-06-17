@@ -1,0 +1,14 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+
+permissions: {}
+
+jobs:
+  pr:
+    name: PR
+    permissions:
+      contents: read
+      pull-requests: read
+    uses: ./.github/workflows/pr.yaml
