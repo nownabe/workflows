@@ -20,6 +20,6 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4
         with:
-          install_args: npm:oxfmt
+          install_args: npm:oxfmt@0.54.0
       - name: Check formatting
         run: oxfmt --check
