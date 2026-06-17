@@ -14,7 +14,7 @@ jobs:
     uses: nownabe/workflows/.github/workflows/pr.yaml@a873b3268351d80a1ef2ec1e71bf13022f597964 # main
 
   result:
-    name: Result
+    name: Pull Request Checks
     if: always()
     needs:
       - common-checks
