@@ -22,7 +22,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    uses: nownabe/workflows/.github/workflows/pr.yaml@v1.0.0 # pin to a release tag or SHA
+    uses: nownabe/workflows/.github/workflows/pr.yaml@v1.0.0 # pin to a commit SHA or release tag, not a moving ref like @v1 or @main
 
   result:
     name: Pull Request Checks
