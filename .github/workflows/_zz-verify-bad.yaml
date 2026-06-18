@@ -1,0 +1,9 @@
+name: Verify Bad Workflow
+on:
+  workflow_call:
+jobs:
+  bad:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "${{ github.event.pull_request.title }}"
