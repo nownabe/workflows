@@ -46,13 +46,13 @@ The `result` job aggregates the outcome into a single status that is convenient 
 
 `pr.yaml` first runs a [`dorny/paths-filter`](https://github.com/dorny/paths-filter) step and then conditionally dispatches the following reusable workflows:
 
-| Workflow | Tools | Runs when |
-| --- | --- | --- |
-| `github-workflow.yaml` | [actionlint](https://github.com/rhysd/actionlint), [ghalint](https://github.com/suzuki-shunsuke/ghalint), [zizmor](https://github.com/zizmorcore/zizmor) | `.github/workflows/**` changed |
-| `oxfmt.yaml` | [oxfmt](https://github.com/oxc-project/oxc) (`--check`) | source / config / docs files changed |
-| `oxlint.yaml` | [oxlint](https://github.com/oxc-project/oxc) | JS/TS or oxlint config changed |
-| `shellcheck.yaml` | [ShellCheck](https://github.com/koalaman/shellcheck) | `**/*.sh` changed |
-| `secret-scan.yaml` | [betterleaks](https://github.com/betterleaks/betterleaks), [TruffleHog](https://github.com/trufflesecurity/trufflehog) | always |
+| Workflow               | Tools                                                                                                                                                    | Runs when                            |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `github-workflow.yaml` | [actionlint](https://github.com/rhysd/actionlint), [ghalint](https://github.com/suzuki-shunsuke/ghalint), [zizmor](https://github.com/zizmorcore/zizmor) | `.github/workflows/**` changed       |
+| `oxfmt.yaml`           | [oxfmt](https://github.com/oxc-project/oxc) (`--check`)                                                                                                  | source / config / docs files changed |
+| `oxlint.yaml`          | [oxlint](https://github.com/oxc-project/oxc)                                                                                                             | JS/TS or oxlint config changed       |
+| `shellcheck.yaml`      | [ShellCheck](https://github.com/koalaman/shellcheck)                                                                                                     | `**/*.sh` changed                    |
+| `secret-scan.yaml`     | [betterleaks](https://github.com/betterleaks/betterleaks), [TruffleHog](https://github.com/trufflesecurity/trufflehog)                                   | always                               |
 
 Each reusable workflow is also callable on its own via `workflow_call` if you only want a subset.
 
