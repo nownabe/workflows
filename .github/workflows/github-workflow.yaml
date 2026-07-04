@@ -12,6 +12,8 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: read
+    env:
+      TOOL: aqua:rhysd/actionlint@1.7.12
     steps:
       - name: Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
@@ -20,10 +22,11 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4
         with:
-          install_args: aqua:rhysd/actionlint@1.7.12
+          install_args: ${{ env.TOOL }}
       - name: Run actionlint
         # shellcheck is preinstalled on the runner and used for embedded run scripts.
-        run: actionlint -color
+        # mise x pins the tool version without requiring it in the caller's mise config.
+        run: mise x "$TOOL" -- actionlint -color
 
   ghalint:
     name: ghalint
@@ -31,6 +34,8 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: read
+    env:
+      TOOL: aqua:suzuki-shunsuke/ghalint@1.5.6
     steps:
       - name: Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
@@ -39,9 +44,9 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4
         with:
-          install_args: aqua:suzuki-shunsuke/ghalint@1.5.6
+          install_args: ${{ env.TOOL }}
       - name: Run ghalint
-        run: ghalint run
+        run: mise x "$TOOL" -- ghalint run
 
   zizmor:
     name: zizmor
@@ -49,6 +54,8 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: read
+    env:
+      TOOL: aqua:zizmorcore/zizmor@1.25.2
     steps:
       - name: Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
@@ -57,6 +64,6 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4
         with:
-          install_args: aqua:zizmorcore/zizmor@1.25.2
+          install_args: ${{ env.TOOL }}
       - name: Run zizmor
-        run: zizmor --offline .github/workflows
+        run: mise x "$TOOL" -- zizmor --offline .github/workflows
