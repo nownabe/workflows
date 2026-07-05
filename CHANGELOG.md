@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/nownabe/workflows/compare/v1.0.0...v1.0.1) (2026-07-05)
+
+
+### Bug Fixes
+
+* run tools via mise x so callers need no mise config ([#24](https://github.com/nownabe/workflows/issues/24)) ([c48a386](https://github.com/nownabe/workflows/commit/c48a3865883ad2cbe8a2e90ec72c9cea7bbea6a0))
+
 ## 1.0.0 (2026-06-17)
 
 
