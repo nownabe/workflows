@@ -33,6 +33,19 @@
     assignees: ["nownabe"],
   },
 
+  // Update the mise version pinned in workflow files
+  // (lines annotated with "# renovate:mise-version")
+  customManagers: [
+    {
+      customType: "regex",
+      managerFilePatterns: ["/^\\.github/workflows/.+\\.ya?ml$/"],
+      matchStrings: ["version: (?<currentValue>\\S+) # renovate:mise-version"],
+      datasourceTemplate: "github-releases",
+      depNameTemplate: "jdx/mise",
+      extractVersionTemplate: "^v(?<version>.+)$",
+    },
+  ],
+
   packageRules: [
     // Semantic commit scope per manager
     {
@@ -42,6 +55,12 @@
     {
       matchManagers: ["mise"],
       semanticCommitScope: "mise",
+    },
+    {
+      matchManagers: ["custom.regex"],
+      matchDepNames: ["jdx/mise"],
+      semanticCommitScope: "mise",
+      schedule: ["before 6am on monday"],
     },
 
     // GitHub Actions: group non-major, individual for major
