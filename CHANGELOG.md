@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/nownabe/workflows/compare/v1.0.1...v1.0.2) (2026-07-05)
+
+
+### Bug Fixes
+
+* ignore caller's locked mise settings when installing tools ([#26](https://github.com/nownabe/workflows/issues/26)) ([c30aa72](https://github.com/nownabe/workflows/commit/c30aa7275b787198c9abebb174cf6641be0cd3df))
+
 ## [1.0.1](https://github.com/nownabe/workflows/compare/v1.0.0...v1.0.1) (2026-07-05)
 
 
