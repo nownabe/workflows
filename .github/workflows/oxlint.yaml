@@ -14,6 +14,8 @@ jobs:
       contents: read
     env:
       TOOL: npm:oxlint@1.69.0
+      # Ignore the caller repo's locked/lockfile mise settings; the tool version is pinned in TOOL.
+      MISE_LOCKED: "0"
     steps:
       - name: Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
