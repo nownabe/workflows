@@ -11,7 +11,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    uses: nownabe/workflows/.github/workflows/pr.yaml@95b6433077e235025af5d3d012aebf75e00354a4 # main
+    uses: nownabe/workflows/.github/workflows/pr.yaml@b89ee6ec626499cb7b10fb29a897068dd1919676 # main
 
   result:
     name: Pull Request Checks
