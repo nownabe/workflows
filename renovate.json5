@@ -1,108 +1,44 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  extends: [
-    "config:recommended",
-    "helpers:pinGitHubActionDigests",
-    "security:openssf-scorecard",
-    ":dependencyDashboard",
-    ":semanticCommits",
-  ],
+  extends: ["github>nownabe/renovate-config"],
 
-  // Use "deps" as semantic commit type for all Renovate PRs
-  semanticCommitType: "deps",
-
-  // Label all Renovate PRs
-  labels: ["deps"],
-
-  // Limit concurrent PRs to avoid overwhelming CI and reviewers
-  prConcurrentLimit: 5,
-
-  // Automerge all PRs after CI passes
-  automerge: true,
-  platformAutomerge: true,
-
-  // Wait before creating PRs to avoid compromised packages
-  // Matches mise.toml's minimum_release_age ("3d")
-  minimumReleaseAge: "3 days",
-
-  // Vulnerability fix PRs should be created immediately and prioritized
-  vulnerabilityAlerts: {
-    enabled: true,
-    addLabels: ["deps/security"],
-    schedule: ["at any time"],
-    assignees: ["nownabe"],
-  },
-
-  // Update the mise version pinned in workflow files
-  // (lines annotated with "# renovate:mise-version")
+  // Repo-specific additions on top of the shared preset.
+  //
+  // Each reusable workflow pins the tool it runs inline via an `env.TOOL`
+  // value (e.g. `TOOL: npm:oxlint@1.69.0`), independently of any mise.toml so
+  // that callers' mise settings are ignored (MISE_LOCKED: "0"). The shared
+  // preset's `mise` manager only reads mise.toml, so these inline versions
+  // would otherwise never be updated. These custom managers keep them current.
+  //
+  // (Arrays from `extends` presets are concatenated with these, so the
+  // preset's own customManagers/packageRules remain in effect.)
   customManagers: [
+    // npm-backed tools: `TOOL: npm:<pkg>@<version>`
     {
       customType: "regex",
       managerFilePatterns: ["/^\\.github/workflows/.+\\.ya?ml$/"],
-      matchStrings: ["version: (?<currentValue>\\S+) # renovate:mise-version"],
+      matchStrings: ["TOOL: npm:(?<depName>[^@\\s]+)@(?<currentValue>\\S+)"],
+      datasourceTemplate: "npm",
+      depTypeTemplate: "workflow-tool",
+    },
+    // aqua-backed tools: `TOOL: aqua:<owner>/<repo>@<version>`
+    // aqua packages map to GitHub releases; tags are `v`-prefixed.
+    {
+      customType: "regex",
+      managerFilePatterns: ["/^\\.github/workflows/.+\\.ya?ml$/"],
+      matchStrings: ["TOOL: aqua:(?<depName>[^@\\s]+)@(?<currentValue>\\S+)"],
       datasourceTemplate: "github-releases",
-      depNameTemplate: "jdx/mise",
       extractVersionTemplate: "^v(?<version>.+)$",
+      depTypeTemplate: "workflow-tool",
     },
   ],
 
   packageRules: [
-    // Semantic commit scope per manager
+    // Scope and group the inline workflow tool bumps (invoked via mise).
     {
-      matchManagers: ["github-actions"],
-      semanticCommitScope: "github-actions",
-    },
-    {
-      matchManagers: ["mise"],
+      matchDepTypes: ["workflow-tool"],
       semanticCommitScope: "mise",
-    },
-    {
-      matchManagers: ["custom.regex"],
-      matchDepNames: ["jdx/mise"],
-      semanticCommitScope: "mise",
-      schedule: ["before 6am on monday"],
-    },
-
-    // GitHub Actions: group non-major, individual for major
-    {
-      matchManagers: ["github-actions"],
-      matchUpdateTypes: ["minor", "patch", "digest"],
-      groupName: "github actions (non-major)",
-      schedule: ["before 6am on monday"],
-    },
-    {
-      matchManagers: ["github-actions"],
-      matchUpdateTypes: ["major"],
-      addLabels: ["deps/major"],
-      automerge: false,
-      schedule: ["before 6am on monday"],
-    },
-
-    // mise tool versions
-    // Workaround: run `mise lock` after mise.toml updates until Renovate
-    // natively supports mise lockfile maintenance (renovatebot/renovate#40568).
-    {
-      matchManagers: ["mise"],
-      matchUpdateTypes: ["minor", "patch"],
-      groupName: "mise tools (non-major)",
-      schedule: ["before 6am on monday"],
-      postUpgradeTasks: {
-        commands: ["mise lock"],
-        fileFilters: ["mise.lock"],
-        installTools: { mise: {} },
-      },
-    },
-    {
-      matchManagers: ["mise"],
-      matchUpdateTypes: ["major"],
-      addLabels: ["deps/major"],
-      automerge: false,
-      schedule: ["before 6am on monday"],
-      postUpgradeTasks: {
-        commands: ["mise lock"],
-        fileFilters: ["mise.lock"],
-        installTools: { mise: {} },
-      },
+      groupName: "workflow pinned tools",
     },
   ],
 }
