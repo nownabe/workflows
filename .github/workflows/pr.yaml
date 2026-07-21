@@ -76,22 +76,3 @@ jobs:
     permissions:
       contents: read
     uses: ./.github/workflows/secret-scan.yaml
-
-  result:
-    name: Result
-    if: always()
-    needs:
-      - github-workflow
-      - oxfmt
-      - renovate-config
-      - shellcheck
-      - secret-scan
-    runs-on: ubuntu-slim
-    timeout-minutes: 5
-    permissions: {}
-    steps:
-      - name: Check job results
-        env:
-          HAS_FAILURE: ${{ contains(needs.*.result, 'failure') }}
-          HAS_CANCELLED: ${{ contains(needs.*.result, 'cancelled') }}
-        run: '[[ "$HAS_FAILURE" == "false" && "$HAS_CANCELLED" == "false" ]]'
