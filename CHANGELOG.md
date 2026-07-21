@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.4](https://github.com/nownabe/workflows/compare/v1.0.3...v1.0.4) (2026-07-21)
+
+
+### Bug Fixes
+
+* **pr:** trigger github-workflow check on linter config changes ([#51](https://github.com/nownabe/workflows/issues/51)) ([8fc073f](https://github.com/nownabe/workflows/commit/8fc073f374f467dbaadac29a59dbc663f5a5eb57))
+* remove internal Result job that could mask filter failures ([#48](https://github.com/nownabe/workflows/issues/48)) ([a69e3a7](https://github.com/nownabe/workflows/commit/a69e3a7f12ee4c2a125a00248e7161ef5c01df23))
+
 ## [1.0.3](https://github.com/nownabe/workflows/compare/v1.0.2...v1.0.3) (2026-07-21)
 
 
