@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/nownabe/workflows/compare/v1.0.2...v1.0.3) (2026-07-21)
+
+
+### Miscellaneous Chores
+
+* release 1.0.3 ([#43](https://github.com/nownabe/workflows/issues/43)) ([9cad6e5](https://github.com/nownabe/workflows/commit/9cad6e5718f2aaf72d869609e1bf754d615c3271))
+
 ## [1.0.2](https://github.com/nownabe/workflows/compare/v1.0.1...v1.0.2) (2026-07-05)
 
 
