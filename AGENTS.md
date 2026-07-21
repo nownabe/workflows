@@ -50,5 +50,5 @@ Reserve non-releasing types for changes that do **not** affect what consumers ge
 - `docs:` — documentation only.
 - `refactor:` / `test:` / `style:` — as usual, when consumer behavior is unchanged.
 
-When in doubt about whether a change is user-facing, ask: *"would a consumer
-pinning to a new tag see any difference?"* If yes, it's `feat:`/`fix:`.
+When in doubt about whether a change is user-facing, ask: _"would a consumer
+pinning to a new tag see any difference?"_ If yes, it's `feat:`/`fix:`.
