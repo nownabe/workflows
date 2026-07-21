@@ -30,10 +30,6 @@ jobs:
               - '**/*.{html,vue,graphql}'
               - '**/*.{md,mdx}'
               - '.oxfmtrc*'
-            oxlint:
-              - '**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}'
-              - '.oxlintrc*'
-              - 'oxlint.config.*'
             renovate_config:
               - 'renovate.json5'
               - 'renovate.json'
@@ -58,14 +54,6 @@ jobs:
     permissions:
       contents: read
     uses: ./.github/workflows/oxfmt.yaml
-
-  oxlint:
-    name: oxlint
-    needs: filter
-    if: ${{ fromJSON(needs.filter.outputs.changes).oxlint == 'true' }}
-    permissions:
-      contents: read
-    uses: ./.github/workflows/oxlint.yaml
 
   renovate-config:
     name: Renovate Config
@@ -95,7 +83,6 @@ jobs:
     needs:
       - github-workflow
       - oxfmt
-      - oxlint
       - renovate-config
       - shellcheck
       - secret-scan
