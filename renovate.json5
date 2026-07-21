@@ -34,10 +34,16 @@
   ],
 
   packageRules: [
-    // Scope and group the inline workflow tool bumps (invoked via mise).
+    // Group the inline workflow tool bumps into one PR, committed as `deps:`.
+    //
+    // The shared preset's top-level `semanticCommitType: "deps"` is overridden
+    // by config:recommended's `:semanticPrefixFixDepsChoreOthers`, which types
+    // production deps as `fix` and everything else (including this custom
+    // `workflow-tool` depType) as `chore`. A packageRule wins over that preset
+    // rule, so set the type here. No scope so the prefix is a bare `deps:`.
     {
       matchDepTypes: ["workflow-tool"],
-      semanticCommitScope: "mise",
+      semanticCommitType: "deps",
       groupName: "workflow pinned tools",
     },
   ],
