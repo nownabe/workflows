@@ -22,6 +22,12 @@ jobs:
           filters: |
             github_workflow:
               - '.github/workflows/**'
+              - '.github/actionlint.{yaml,yml}'
+              - 'ghalint.{yaml,yml}'
+              - '.ghalint.{yaml,yml}'
+              - '.github/ghalint.{yaml,yml}'
+              - 'zizmor.{yaml,yml}'
+              - '.github/zizmor.{yaml,yml}'
             oxfmt:
               - '**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}'
               - '**/*.{json,jsonc,json5}'
