@@ -34,6 +34,12 @@ jobs:
               - '**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}'
               - '.oxlintrc*'
               - 'oxlint.config.*'
+            renovate_config:
+              - 'renovate.json5'
+              - 'renovate.json'
+              - '.renovaterc*'
+              - '.github/renovate.json5'
+              - '.github/renovate.json'
             shellcheck:
               - '**/*.sh'
 
@@ -61,6 +67,14 @@ jobs:
       contents: read
     uses: ./.github/workflows/oxlint.yaml
 
+  renovate-config:
+    name: Renovate Config
+    needs: filter
+    if: ${{ fromJSON(needs.filter.outputs.changes).renovate_config == 'true' }}
+    permissions:
+      contents: read
+    uses: ./.github/workflows/renovate-config.yaml
+
   shellcheck:
     name: shellcheck
     needs: filter
@@ -82,6 +96,7 @@ jobs:
       - github-workflow
       - oxfmt
       - oxlint
+      - renovate-config
       - shellcheck
       - secret-scan
     runs-on: ubuntu-slim
