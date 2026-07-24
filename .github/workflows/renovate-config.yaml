@@ -13,7 +13,7 @@ jobs:
     permissions:
       contents: read
     env:
-      TOOL: npm:renovate@43.274.0
+      TOOL: npm:renovate@43.275.0
       # Ignore the caller repo's locked/lockfile mise settings; the tool version is pinned in TOOL.
       MISE_LOCKED: "0"
     steps:
