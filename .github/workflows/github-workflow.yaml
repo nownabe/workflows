@@ -24,7 +24,7 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@dad1bfd3df957f44999b559dd69dc1671cb4e9ea # v4
         with:
-          version: 2026.7.7 # renovate:mise-version
+          version: 2026.7.11 # renovate:mise-version
           install_args: ${{ env.TOOL }}
       - name: Run actionlint
         # shellcheck is preinstalled on the runner and used for embedded run scripts.
@@ -49,7 +49,7 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@dad1bfd3df957f44999b559dd69dc1671cb4e9ea # v4
         with:
-          version: 2026.7.7 # renovate:mise-version
+          version: 2026.7.11 # renovate:mise-version
           install_args: ${{ env.TOOL }}
       - name: Run ghalint
         run: mise x "$TOOL" -- ghalint run
@@ -72,7 +72,7 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@dad1bfd3df957f44999b559dd69dc1671cb4e9ea # v4
         with:
-          version: 2026.7.7 # renovate:mise-version
+          version: 2026.7.11 # renovate:mise-version
           install_args: ${{ env.TOOL }}
       - name: Run zizmor
         run: mise x "$TOOL" -- zizmor --offline .github/workflows
