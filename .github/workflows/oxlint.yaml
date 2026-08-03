@@ -25,6 +25,9 @@ jobs:
         uses: jdx/mise-action@9e7f7633ff6f6d6048a9418a68d48f288f50eb14 # v4
         with:
           version: 2026.7.11 # renovate:mise-version
-          install_args: ${{ env.TOOL }}
+          # Do not install via the action: it force-adds --locked whenever the caller
+          # repo has a mise.lock, which cannot resolve versions pinned here in TOOL.
+          # The run step below installs TOOL on demand, honoring MISE_LOCKED=0.
+          install: "false"
       - name: Run oxlint
         run: mise x "$TOOL" -- oxlint
