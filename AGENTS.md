@@ -17,7 +17,7 @@ The reusable workflows (the product) are the files **without** a `_` prefix:
 - `oxfmt.yaml`
 - `oxlint.yaml`
 - `shellcheck.yaml`
-- `secret-scan.yaml`
+- `leak-scan.yaml`
 - `renovate-config.yaml`
 
 Files **with** a `_` prefix (`_pr.yaml`, `_release.yaml`, `_codeql.yaml`, …) are

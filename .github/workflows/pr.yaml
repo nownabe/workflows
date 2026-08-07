@@ -77,8 +77,10 @@ jobs:
       contents: read
     uses: ./.github/workflows/shellcheck.yaml
 
-  secret-scan:
+  leak-scan:
+    # Keep the display name "Secret Scan" so existing required-check names in
+    # consumer repos' branch protection stay valid.
     name: Secret Scan
     permissions:
       contents: read
-    uses: ./.github/workflows/secret-scan.yaml
+    uses: ./.github/workflows/leak-scan.yaml
