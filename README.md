@@ -52,7 +52,7 @@ The `result` job aggregates the outcome into a single status that is convenient 
 | `oxfmt.yaml`           | [oxfmt](https://github.com/oxc-project/oxc) (`--check`)                                                                                                  | source / config / docs files changed |
 | `oxlint.yaml`          | [oxlint](https://github.com/oxc-project/oxc)                                                                                                             | JS/TS or oxlint config changed       |
 | `shellcheck.yaml`      | [ShellCheck](https://github.com/koalaman/shellcheck)                                                                                                     | `**/*.sh` changed                    |
-| `secret-scan.yaml`     | [betterleaks](https://github.com/betterleaks/betterleaks), [TruffleHog](https://github.com/trufflesecurity/trufflehog)                                   | always                               |
+| `leak-scan.yaml`       | [betterleaks](https://github.com/betterleaks/betterleaks), [TruffleHog](https://github.com/trufflesecurity/trufflehog)                                   | always                               |
 
 Each reusable workflow is also callable on its own via `workflow_call` if you only want a subset.
 
