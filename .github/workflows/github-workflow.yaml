@@ -67,7 +67,7 @@ jobs:
     permissions:
       contents: read
     env:
-      TOOL: aqua:zizmorcore/zizmor@1.27.0
+      TOOL: aqua:zizmorcore/zizmor@1.29.0
       # Ignore the caller repo's locked/lockfile mise settings; the tool version is pinned in TOOL.
       MISE_LOCKED: "0"
     steps:
