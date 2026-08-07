@@ -24,7 +24,7 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@9e7f7633ff6f6d6048a9418a68d48f288f50eb14 # v4
         with:
-          version: 2026.7.11 # renovate:mise-version
+          version: 2026.8.1 # renovate:mise-version
           # mise-action forces `mise install --locked` when the caller repo has a mise.lock,
           # which fails if TOOL is not in that lockfile. Skip its install; `mise x` below
           # installs the pinned TOOL and respects MISE_LOCKED=0.
