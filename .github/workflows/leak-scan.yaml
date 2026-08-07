@@ -13,7 +13,7 @@ jobs:
     permissions:
       contents: read
     env:
-      TOOL: aqua:betterleaks/betterleaks@1.6.1
+      TOOL: aqua:betterleaks/betterleaks@1.7.3
       # Ignore the caller repo's locked/lockfile mise settings; the tool version is pinned in TOOL.
       MISE_LOCKED: "0"
     steps:
@@ -40,7 +40,7 @@ jobs:
     permissions:
       contents: read
     env:
-      TOOL: aqua:trufflesecurity/trufflehog@3.95.9
+      TOOL: aqua:trufflesecurity/trufflehog@3.96.0
       # Ignore the caller repo's locked/lockfile mise settings; the tool version is pinned in TOOL.
       MISE_LOCKED: "0"
     steps:
