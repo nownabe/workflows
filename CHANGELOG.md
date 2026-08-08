@@ -1,5 +1,29 @@
 # Changelog
 
+## [2.0.0](https://github.com/nownabe/workflows/compare/v1.0.4...v2.0.0) (2026-08-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* install pinned tools via mise x, rename secret-scan.yaml to leak-scan.yaml ([#65](https://github.com/nownabe/workflows/issues/65))
+
+### Features
+
+* run trufflehog via the official trufflehog action ([#68](https://github.com/nownabe/workflows/issues/68)) ([d8819ef](https://github.com/nownabe/workflows/commit/d8819ef16ea8ca737cbbf506a6811ae7894afda3))
+* run zizmor via the official zizmor-action ([#67](https://github.com/nownabe/workflows/issues/67)) ([9430d40](https://github.com/nownabe/workflows/commit/9430d4002ff761cc7ce5ebc96da5f380bcdc8546))
+
+
+### Bug Fixes
+
+* install pinned tools via mise x, rename secret-scan.yaml to leak-scan.yaml ([#65](https://github.com/nownabe/workflows/issues/65)) ([09e7d2e](https://github.com/nownabe/workflows/commit/09e7d2e1ee8607990cc643434a3ddee9e6e689bb))
+
+
+### Dependencies
+
+* update dependency renovate to v43.274.0 ([#57](https://github.com/nownabe/workflows/issues/57)) ([fd88f9f](https://github.com/nownabe/workflows/commit/fd88f9f2f2cbdbd534763fd64591326a0c607432))
+* update dependency renovate to v43.275.0 ([#59](https://github.com/nownabe/workflows/issues/59)) ([505ea94](https://github.com/nownabe/workflows/commit/505ea94ddd63a09d41fbe2221328e1c44a05bc2b))
+* update workflow pinned tools ([#61](https://github.com/nownabe/workflows/issues/61)) ([504ec63](https://github.com/nownabe/workflows/commit/504ec63cfc4ebed9b05d02c75d0992ae95cf6412))
+
 ## [1.0.4](https://github.com/nownabe/workflows/compare/v1.0.3...v1.0.4) (2026-07-21)
 
 
