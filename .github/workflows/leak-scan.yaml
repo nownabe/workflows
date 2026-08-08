@@ -51,7 +51,6 @@ jobs:
       - name: Run trufflehog
         uses: trufflesecurity/trufflehog@6f3c981e7b77f235fd2702dd74af25fc4b72bf11 # v3.96.0
         with:
-          # Tag of ghcr.io/trufflesecurity/trufflehog the action runs.
           version: ${{ env.TRUFFLEHOG_VERSION }}
           # --fail, --no-update, and event-aware commit ranges (PR: base..head,
           # push: before..after, schedule/dispatch: full scan) are handled by
