@@ -1,0 +1,10 @@
+excludes:
+  # oxlint-action / oxfmt-action fetch the PR base branch inside the action on
+  # pull_request events, and that fetch needs the checkout credentials on
+  # private caller repos, so these checkouts keep persist-credentials: true.
+  - policy_name: checkout_persist_credentials_should_be_false
+    workflow_file_path: .github/workflows/oxlint.yaml
+    job_name: oxlint
+  - policy_name: checkout_persist_credentials_should_be_false
+    workflow_file_path: .github/workflows/oxfmt.yaml
+    job_name: oxfmt

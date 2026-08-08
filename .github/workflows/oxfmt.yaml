@@ -13,21 +13,19 @@ jobs:
     permissions:
       contents: read
     env:
-      TOOL: npm:oxfmt@0.62.0
-      # Ignore the caller repo's locked/lockfile mise settings; the tool version is pinned in TOOL.
-      MISE_LOCKED: "0"
+      # renovate: datasource=npm depName=oxfmt
+      OXFMT_VERSION: "0.62.0"
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          persist-credentials: false
-      - name: Setup mise
-        uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4
-        with:
-          version: 2026.8.2 # renovate:mise-version
-          # mise-action forces `mise install --locked` when the caller repo has a mise.lock,
-          # which fails if TOOL is not in that lockfile. Skip its install; `mise x` below
-          # installs the pinned TOOL and respects MISE_LOCKED=0.
-          install: false
+          # oxfmt-action always fetches the PR base branch inside the action
+          # on pull_request events; that fetch needs the checkout credentials
+          # on private caller repos. Excluded from ghalint in ghalint.yaml.
+          persist-credentials: true # zizmor: ignore[artipacked]
       - name: Check formatting
-        run: mise x "$TOOL" -- oxfmt --check
+        uses: oxc-project/oxfmt-action@5f25fc2dccfa7335bc29ceceecc610d8b5c93d64 # v0.0.1
+        with:
+          version: ${{ env.OXFMT_VERSION }}
+          # Check the whole tree, matching the previous plain `oxfmt --check`.
+          all-files: true
