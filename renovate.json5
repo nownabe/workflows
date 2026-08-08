@@ -46,5 +46,20 @@
       semanticCommitType: "deps",
       groupName: "workflow pinned tools",
     },
+
+    // Tools run via their official actions are pinned with annotated
+    // `<TOOL>_VERSION` env vars, matched by the shared preset's
+    // customManagers:githubActionsVersions. Those deps carry no depType, so
+    // match the manager itself and exclude the preset's jdx/mise pin (which
+    // keeps its own `chore(mise)` handling). Like the TOOL pins above, they
+    // control what consumers run: commit as `deps:` so the bumps are released
+    // (deps is a visible changelog section in release-please-config.json) and
+    // share the group.
+    {
+      matchManagers: ["custom.regex"],
+      matchDepNames: ["!jdx/mise"],
+      semanticCommitType: "deps",
+      groupName: "workflow pinned tools",
+    },
   ],
 }

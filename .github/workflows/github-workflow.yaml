@@ -67,21 +67,21 @@ jobs:
     permissions:
       contents: read
     env:
-      TOOL: aqua:zizmorcore/zizmor@1.29.0
-      # Ignore the caller repo's locked/lockfile mise settings; the tool version is pinned in TOOL.
-      MISE_LOCKED: "0"
+      # renovate: datasource=github-releases depName=zizmorcore/zizmor extractVersion=^v(?<version>.+)$
+      ZIZMOR_VERSION: "1.29.0"
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-      - name: Setup mise
-        uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4
-        with:
-          version: 2026.8.2 # renovate:mise-version
-          # mise-action forces `mise install --locked` when the caller repo has a mise.lock,
-          # which fails if TOOL is not in that lockfile. Skip its install; `mise x` below
-          # installs the pinned TOOL and respects MISE_LOCKED=0.
-          install: false
       - name: Run zizmor
-        run: mise x "$TOOL" -- zizmor --offline .github/workflows
+        uses: zizmorcore/zizmor-action@3dc1ecc9bcb9e94e9b2c709687979e1298497054 # v0.6.2
+        with:
+          version: ${{ env.ZIZMOR_VERSION }}
+          inputs: .github/workflows
+          # Parity with the previous `zizmor --offline` invocation.
+          online-audits: false
+          # SARIF upload requires GitHub Advanced Security and
+          # security-events: write permission; emit annotations instead.
+          advanced-security: false
+          annotations: true
