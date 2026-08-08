@@ -40,22 +40,16 @@ jobs:
     permissions:
       contents: read
     env:
-      TOOL: aqua:trufflesecurity/trufflehog@3.96.0
-      # Ignore the caller repo's locked/lockfile mise settings; the tool version is pinned in TOOL.
-      MISE_LOCKED: "0"
+      # renovate: datasource=github-releases depName=trufflesecurity/trufflehog extractVersion=^v(?<version>.+)$
+      TRUFFLEHOG_VERSION: "3.96.0"
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Setup mise
-        uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4
-        with:
-          version: 2026.8.2 # renovate:mise-version
-          # mise-action forces `mise install --locked` when the caller repo has a mise.lock,
-          # which fails if TOOL is not in that lockfile. Skip its install; `mise x` below
-          # installs the pinned TOOL and respects MISE_LOCKED=0.
-          install: false
       - name: Run trufflehog
-        run: mise x "$TOOL" -- trufflehog git file://. --results=verified --fail --no-update
+        uses: trufflesecurity/trufflehog@6f3c981e7b77f235fd2702dd74af25fc4b72bf11 # v3.96.0
+        with:
+          version: ${{ env.TRUFFLEHOG_VERSION }}
+          extra_args: --results=verified
