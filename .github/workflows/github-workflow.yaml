@@ -79,8 +79,6 @@ jobs:
         with:
           version: ${{ env.ZIZMOR_VERSION }}
           inputs: .github/workflows
-          # Parity with the previous `zizmor --offline` invocation.
-          online-audits: false
           # SARIF upload requires GitHub Advanced Security and
           # security-events: write permission; emit annotations instead.
           advanced-security: false
