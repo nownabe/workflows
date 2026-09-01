@@ -71,41 +71,41 @@ url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/
 provenance = "cosign"
 
 [[tools."aqua:nodejs/node"]]
-version = "24.19.0"
+version = "24.20.0"
 backend = "aqua:nodejs/node"
 
 [tools."aqua:nodejs/node"."platforms.linux-arm64"]
-url = "https://nodejs.org/dist/v24.19.0/node-v24.19.0-linux-arm64.tar.gz"
+url = "https://nodejs.org/dist/24.20.0/node-24.20.0-linux-arm64.tar.gz"
 
 [tools."aqua:nodejs/node"."platforms.linux-arm64-musl"]
-url = "https://nodejs.org/dist/v24.19.0/node-v24.19.0-linux-arm64.tar.gz"
+url = "https://nodejs.org/dist/24.20.0/node-24.20.0-linux-arm64.tar.gz"
 
 [tools."aqua:nodejs/node"."platforms.linux-x64"]
-url = "https://nodejs.org/dist/v24.19.0/node-v24.19.0-linux-x64.tar.gz"
+url = "https://nodejs.org/dist/24.20.0/node-24.20.0-linux-x64.tar.gz"
 
 [tools."aqua:nodejs/node"."platforms.linux-x64-baseline"]
-url = "https://nodejs.org/dist/v24.19.0/node-v24.19.0-linux-x64.tar.gz"
+url = "https://nodejs.org/dist/24.20.0/node-24.20.0-linux-x64.tar.gz"
 
 [tools."aqua:nodejs/node"."platforms.linux-x64-musl"]
-url = "https://nodejs.org/dist/v24.19.0/node-v24.19.0-linux-x64.tar.gz"
+url = "https://nodejs.org/dist/24.20.0/node-24.20.0-linux-x64.tar.gz"
 
 [tools."aqua:nodejs/node"."platforms.linux-x64-musl-baseline"]
-url = "https://nodejs.org/dist/v24.19.0/node-v24.19.0-linux-x64.tar.gz"
+url = "https://nodejs.org/dist/24.20.0/node-24.20.0-linux-x64.tar.gz"
 
 [tools."aqua:nodejs/node"."platforms.macos-arm64"]
-url = "https://nodejs.org/dist/v24.19.0/node-v24.19.0-darwin-arm64.tar.gz"
+url = "https://nodejs.org/dist/24.20.0/node-24.20.0-darwin-arm64.tar.gz"
 
 [tools."aqua:nodejs/node"."platforms.macos-x64"]
-url = "https://nodejs.org/dist/v24.19.0/node-v24.19.0-darwin-x64.tar.gz"
+url = "https://nodejs.org/dist/24.20.0/node-24.20.0-darwin-x64.tar.gz"
 
 [tools."aqua:nodejs/node"."platforms.macos-x64-baseline"]
-url = "https://nodejs.org/dist/v24.19.0/node-v24.19.0-darwin-x64.tar.gz"
+url = "https://nodejs.org/dist/24.20.0/node-24.20.0-darwin-x64.tar.gz"
 
 [tools."aqua:nodejs/node"."platforms.windows-x64"]
-url = "https://nodejs.org/dist/v24.19.0/node-v24.19.0-win-x64.zip"
+url = "https://nodejs.org/dist/24.20.0/node-24.20.0-win-x64.zip"
 
 [tools."aqua:nodejs/node"."platforms.windows-x64-baseline"]
-url = "https://nodejs.org/dist/v24.19.0/node-v24.19.0-win-x64.zip"
+url = "https://nodejs.org/dist/24.20.0/node-24.20.0-win-x64.zip"
 
 [[tools."aqua:rhysd/actionlint"]]
 version = "1.7.12"
