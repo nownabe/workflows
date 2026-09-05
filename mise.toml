@@ -3,7 +3,7 @@
 "aqua:suzuki-shunsuke/ghalint" = "1.5.6"
 "aqua:zizmorcore/zizmor" = "1.30.0"
 "aqua:betterleaks/betterleaks" = "1.8.1"
-"aqua:trufflesecurity/trufflehog" = "3.97.1"
+"aqua:trufflesecurity/trufflehog" = "3.97.2"
 "aqua:nodejs/node" = "24.20.0" # runtime for the npm-backed tools below
 # aqua has native binaries (oxc apps_v) but our pinned mise's baked registry can't resolve them yet, so use npm
 "npm:oxlint" = "1.81.0"
