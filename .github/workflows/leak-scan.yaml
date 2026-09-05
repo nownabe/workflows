@@ -25,7 +25,7 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4
         with:
-          version: 2026.9.0 # renovate:mise-version
+          version: 2026.9.1 # renovate:mise-version
           # mise-action forces `mise install --locked` when the caller repo has a mise.lock,
           # which fails if TOOL is not in that lockfile. Skip its install; `mise x` below
           # installs the pinned TOOL and respects MISE_LOCKED=0.
@@ -49,7 +49,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Run trufflehog
-        uses: trufflesecurity/trufflehog@20652fbbdefffcdaa493a5bf57ab2ac6b1db715b # v3.97.1
+        uses: trufflesecurity/trufflehog@cc1fe982afc515d2991365ce8d4d0dd07170fcad # v3.97.2
         with:
           version: ${{ env.TRUFFLEHOG_VERSION }}
           extra_args: --results=verified
