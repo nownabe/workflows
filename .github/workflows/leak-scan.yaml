@@ -49,7 +49,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Run trufflehog
-        uses: trufflesecurity/trufflehog@cc1fe982afc515d2991365ce8d4d0dd07170fcad # v3.97.2
+        uses: trufflesecurity/trufflehog@8947a7f5c537fa4504b38c036c6ec4ed426df72f # v3.97.3
         with:
           version: ${{ env.TRUFFLEHOG_VERSION }}
           extra_args: --results=verified
