@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/nownabe/workflows/compare/v2.0.1...v2.0.2) (2026-09-19)
+
+
+### Dependencies
+
+* update dependency renovate to v44.94.0 ([#244](https://github.com/nownabe/workflows/issues/244)) ([18589da](https://github.com/nownabe/workflows/commit/18589da420caac9da560b07b65dfaa9dc0183eaf))
+
 ## [2.0.1](https://github.com/nownabe/workflows/compare/v2.0.0...v2.0.1) (2026-09-19)
 
 
