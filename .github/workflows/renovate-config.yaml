@@ -15,7 +15,7 @@ jobs:
     env:
       # Kept in the `npm:<pkg>@<version>` shape the repo's customManager matches,
       # even though npx takes the bare `<pkg>@<version>`.
-      TOOL: npm:renovate@44.93.6
+      TOOL: npm:renovate@44.93.8
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
