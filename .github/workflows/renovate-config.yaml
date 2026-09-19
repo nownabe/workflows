@@ -13,22 +13,20 @@ jobs:
     permissions:
       contents: read
     env:
+      # Kept in the `npm:<pkg>@<version>` shape the repo's customManager matches,
+      # even though npx takes the bare `<pkg>@<version>`.
       TOOL: npm:renovate@44.93.6
-      # Ignore the caller repo's locked/lockfile mise settings; the tool version is pinned in TOOL.
-      MISE_LOCKED: "0"
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-      - name: Setup mise
-        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4
-        with:
-          version: 2026.9.9 # renovate:mise-version
-          # mise-action forces `mise install --locked` when the caller repo has a mise.lock,
-          # which fails if TOOL is not in that lockfile. Skip its install; `mise x` below
-          # installs the pinned TOOL and respects MISE_LOCKED=0.
-          install: false
       - name: Run renovate-config-validator
-        # mise x pins the tool version without requiring it in the caller's mise config.
-        run: mise x "$TOOL" -- renovate-config-validator --strict
+        # Renovate documents npx as the way to run the validator, and npx needs no
+        # setup on the runner. Not mise like the other tool jobs: its npm backend
+        # installs via aube, whose trust policy rejects renovate's dependency tree
+        # over a provenance downgrade in @yarnpkg/libzip, and the exclusion knob
+        # (trust_policy_excludes) exists only as a mise.toml per-tool option —
+        # which this workflow deliberately avoids so callers' mise config can't
+        # interfere.
+        run: npx --yes --package "${TOOL#npm:}" -- renovate-config-validator --strict
