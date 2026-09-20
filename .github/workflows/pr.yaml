@@ -51,7 +51,7 @@ jobs:
     if: ${{ fromJSON(needs.filter.outputs.changes).github_workflow == 'true' }}
     permissions:
       contents: read
-    uses: ./.github/workflows/github-workflow.yaml
+    uses: $/.github/workflows/github-workflow.yaml
 
   oxfmt:
     name: oxfmt
@@ -59,7 +59,7 @@ jobs:
     if: ${{ fromJSON(needs.filter.outputs.changes).oxfmt == 'true' }}
     permissions:
       contents: read
-    uses: ./.github/workflows/oxfmt.yaml
+    uses: $/.github/workflows/oxfmt.yaml
 
   renovate-config:
     name: Renovate Config
@@ -67,7 +67,7 @@ jobs:
     if: ${{ fromJSON(needs.filter.outputs.changes).renovate_config == 'true' }}
     permissions:
       contents: read
-    uses: ./.github/workflows/renovate-config.yaml
+    uses: $/.github/workflows/renovate-config.yaml
 
   shellcheck:
     name: shellcheck
@@ -75,7 +75,7 @@ jobs:
     if: ${{ fromJSON(needs.filter.outputs.changes).shellcheck == 'true' }}
     permissions:
       contents: read
-    uses: ./.github/workflows/shellcheck.yaml
+    uses: $/.github/workflows/shellcheck.yaml
 
   leak-scan:
     # Keep the display name "Secret Scan" so existing required-check names in
@@ -83,4 +83,4 @@ jobs:
     name: Secret Scan
     permissions:
       contents: read
-    uses: ./.github/workflows/leak-scan.yaml
+    uses: $/.github/workflows/leak-scan.yaml
