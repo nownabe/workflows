@@ -32,7 +32,10 @@ jobs:
       - name: Run actionlint
         # shellcheck is preinstalled on the runner and used for embedded run scripts.
         # mise x pins the tool version without requiring it in the caller's mise config.
-        run: mise x "$TOOL" -- actionlint -color
+        # actionlint predates GitHub's `$/` self-repository `uses:` syntax (2026-07), which
+        # zizmor's self-repository audit requires, so ignore only the messages that quote
+        # a `$/...` value. Drop the -ignore once rhysd/actionlint#711 ships.
+        run: mise x "$TOOL" -- actionlint -color -ignore '"\$/'
 
   ghalint:
     name: ghalint
