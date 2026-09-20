@@ -11,7 +11,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    uses: nownabe/workflows/.github/workflows/pr.yaml@0f93400a7e95e1f9637bab89640ba22c1bdd8af3 # v2.0.0
+    uses: nownabe/workflows/.github/workflows/pr.yaml@cf27462e29807575d5e746f23b9ecfc3fd5221a1 # TEMP: verify fix/oxc-npx, revert before merge
 
   result:
     name: Pull Request Checks
