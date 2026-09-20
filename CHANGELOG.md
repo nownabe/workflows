@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/nownabe/workflows/compare/v2.0.2...v2.0.3) (2026-09-20)
+
+
+### Bug Fixes
+
+* let actionlint accept GitHub's $/ self-repository syntax ([#253](https://github.com/nownabe/workflows/issues/253)) ([b480c46](https://github.com/nownabe/workflows/commit/b480c46637f99d6c09a9fc5f8ffb2e8ed35d890d))
+
 ## [2.0.2](https://github.com/nownabe/workflows/compare/v2.0.1...v2.0.2) (2026-09-20)
 
 
