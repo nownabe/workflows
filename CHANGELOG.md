@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.0.2](https://github.com/nownabe/workflows/compare/v2.0.1...v2.0.2) (2026-09-20)
+
+
+### Bug Fixes
+
+* run oxfmt and oxlint with npx instead of mise ([#252](https://github.com/nownabe/workflows/issues/252)) ([c780a42](https://github.com/nownabe/workflows/commit/c780a4262a8bcf33cf2526114bae09e066ccc01b))
+
+
+### Dependencies
+
+* update dependency renovate to v44.94.0 ([#244](https://github.com/nownabe/workflows/issues/244)) ([18589da](https://github.com/nownabe/workflows/commit/18589da420caac9da560b07b65dfaa9dc0183eaf))
+* update workflow pinned tools ([#250](https://github.com/nownabe/workflows/issues/250)) ([e888e14](https://github.com/nownabe/workflows/commit/e888e14f11cdd96e0f8b8f29d0be5c5683d7208b))
+
 ## [2.0.1](https://github.com/nownabe/workflows/compare/v2.0.0...v2.0.1) (2026-09-19)
 
 
