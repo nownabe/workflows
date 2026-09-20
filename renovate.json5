@@ -6,7 +6,7 @@
   //
   // Each reusable workflow pins the tool it runs inline via an `env.TOOL`
   // value (e.g. `TOOL: npm:oxlint@1.69.0`), independently of any mise.toml so
-  // that callers' mise settings are ignored (MISE_LOCKED: "0"). The shared
+  // that callers' mise settings are ignored (MISE_IGNORED_CONFIG_PATHS). The shared
   // preset's `mise` manager only reads mise.toml, so these inline versions
   // would otherwise never be updated. These custom managers keep them current.
   //
