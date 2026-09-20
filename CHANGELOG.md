@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.4](https://github.com/nownabe/workflows/compare/v2.0.3...v2.0.4) (2026-09-20)
+
+
+### Bug Fixes
+
+* call nested workflows with GitHub's $/ self-repository syntax ([#255](https://github.com/nownabe/workflows/issues/255)) ([3ca57ce](https://github.com/nownabe/workflows/commit/3ca57cee42776f29dd94609b86aa1480b7ceea51))
+
 ## [2.0.3](https://github.com/nownabe/workflows/compare/v2.0.2...v2.0.3) (2026-09-20)
 
 
