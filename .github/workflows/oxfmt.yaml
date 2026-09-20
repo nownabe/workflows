@@ -14,20 +14,12 @@ jobs:
       contents: read
     env:
       TOOL: npm:oxfmt@0.68.0
-      # Ignore the caller repo's locked/lockfile mise settings; the tool version is pinned in TOOL.
-      MISE_LOCKED: "0"
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-      - name: Setup mise
-        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4
-        with:
-          version: 2026.9.10 # renovate:mise-version
-          # mise-action forces `mise install --locked` when the caller repo has a mise.lock,
-          # which fails if TOOL is not in that lockfile. Skip its install; `mise x` below
-          # installs the pinned TOOL and respects MISE_LOCKED=0.
-          install: false
       - name: Check formatting
-        run: mise x "$TOOL" -- oxfmt --check
+        # Run on the runner's preinstalled Node rather than through mise: mise would read
+        # the caller's mise.toml, and a pinned node there blocks installing the npm tool.
+        run: npx --yes "${TOOL#npm:}" --check
