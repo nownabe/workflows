@@ -13,7 +13,7 @@ jobs:
     permissions:
       contents: read
     env:
-      TOOL: aqua:betterleaks/betterleaks@1.8.1
+      TOOL: aqua:betterleaks/betterleaks@1.9.0
       # Ignore the caller repo's locked/lockfile mise settings; the tool version is pinned in TOOL.
       MISE_LOCKED: "0"
     steps:
@@ -41,7 +41,7 @@ jobs:
       contents: read
     env:
       # renovate: datasource=github-releases depName=trufflesecurity/trufflehog extractVersion=^v(?<version>.+)$
-      TRUFFLEHOG_VERSION: "3.97.5"
+      TRUFFLEHOG_VERSION: "3.97.9"
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
