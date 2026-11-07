@@ -14,6 +14,7 @@ The reusable workflows (the product) are the files **without** a `_` prefix:
 
 - `pr.yaml` (main entry point)
 - `github-workflow.yaml`
+- `mise-lock.yaml`
 - `oxfmt.yaml`
 - `oxlint.yaml`
 - `shellcheck.yaml`

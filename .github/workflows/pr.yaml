@@ -28,6 +28,9 @@ jobs:
               - '.github/ghalint.{yaml,yml}'
               - 'zizmor.{yaml,yml}'
               - '.github/zizmor.{yaml,yml}'
+            mise_lock:
+              - 'mise.toml'
+              - 'mise.lock'
             oxfmt:
               - '**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}'
               - '**/*.{json,jsonc,json5}'
@@ -52,6 +55,14 @@ jobs:
     permissions:
       contents: read
     uses: $/.github/workflows/github-workflow.yaml
+
+  mise-lock:
+    name: mise Lockfile
+    needs: filter
+    if: ${{ fromJSON(needs.filter.outputs.changes).mise_lock == 'true' }}
+    permissions:
+      contents: read
+    uses: $/.github/workflows/mise-lock.yaml
 
   oxfmt:
     name: oxfmt

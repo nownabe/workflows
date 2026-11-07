@@ -1,0 +1,40 @@
+name: mise Lockfile
+
+on:
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  mise-lock:
+    name: mise Lockfile
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    env:
+      # Lockfile coverage is decided from mise.toml and mise.lock alone; staying
+      # offline keeps the result independent of registries and release metadata.
+      MISE_OFFLINE: "1"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Setup mise
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4
+        with:
+          version: 2026.10.18 # renovate:mise-version
+          install: false
+      - name: Check mise.lock covers mise.toml
+        # Not `mise install --locked`: a version missing from mise.lock is only a
+        # warning there and the exit code can still be 0. `mise lock --dry-run`
+        # lists every version mise.lock would have to change, so any entry is a
+        # mismatch.
+        shell: bash
+        run: |
+          changes=$(mise lock --dry-run --json)
+          if [[ "$changes" != "[]" ]]; then
+            jq -r '.[] | "::error file=mise.lock::\(.name): mise.lock has \(.old_versions) but mise.toml requires \(.new_versions). Run `mise lock` and commit mise.lock."' <<<"$changes"
+            exit 1
+          fi
