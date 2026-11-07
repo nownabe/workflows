@@ -22,7 +22,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Setup mise
-        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4
+        uses: jdx/mise-action@b44d12e7d0d8ee7461bb893e1b1993500433185b # v5.2.7
         with:
           version: 2026.11.0 # renovate:mise-version
           # mise-action forces `mise install --locked` when the caller repo has a mise.lock,
@@ -35,6 +35,9 @@ jobs:
         # actionlint predates GitHub's `$/` self-repository `uses:` syntax (2026-07), which
         # zizmor's self-repository audit requires, so ignore only the messages that quote
         # a `$/...` value. Drop the -ignore once rhysd/actionlint#711 ships.
+        env:
+          # mise-action v5 keeps its token to itself; scope one to the step that installs TOOL.
+          MISE_GITHUB_TOKEN: ${{ github.token }}
         run: mise x "$TOOL" -- actionlint -color -ignore '"\$/'
 
   ghalint:
@@ -53,7 +56,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Setup mise
-        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4
+        uses: jdx/mise-action@b44d12e7d0d8ee7461bb893e1b1993500433185b # v5.2.7
         with:
           version: 2026.11.0 # renovate:mise-version
           # mise-action forces `mise install --locked` when the caller repo has a mise.lock,
@@ -61,6 +64,8 @@ jobs:
           # installs the pinned TOOL and respects MISE_LOCKED=0.
           install: false
       - name: Run ghalint
+        env:
+          MISE_GITHUB_TOKEN: ${{ github.token }}
         run: mise x "$TOOL" -- ghalint run
 
   zizmor:
