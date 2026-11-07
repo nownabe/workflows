@@ -44,7 +44,7 @@ jobs:
     permissions:
       contents: read
     env:
-      TOOL: aqua:suzuki-shunsuke/ghalint@1.5.6
+      TOOL: aqua:suzuki-shunsuke/ghalint@1.6.0
       # Ignore the caller repo's locked/lockfile mise settings; the tool version is pinned in TOOL.
       MISE_LOCKED: "0"
     steps:
@@ -71,7 +71,7 @@ jobs:
       contents: read
     env:
       # renovate: datasource=github-releases depName=zizmorcore/zizmor extractVersion=^v(?<version>.+)$
-      ZIZMOR_VERSION: "1.31.1"
+      ZIZMOR_VERSION: "1.32.0"
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
