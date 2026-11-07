@@ -1,13 +1,13 @@
 [tools]
 "aqua:rhysd/actionlint" = "1.7.12"
-"aqua:suzuki-shunsuke/ghalint" = "1.5.6"
-"aqua:zizmorcore/zizmor" = "1.31.1"
+"aqua:suzuki-shunsuke/ghalint" = "1.6.0"
+"aqua:zizmorcore/zizmor" = "1.32.0"
 "aqua:betterleaks/betterleaks" = "1.9.0"
-"aqua:trufflesecurity/trufflehog" = "3.99.4"
-"aqua:nodejs/node" = "24.22.1" # runtime for the npm-backed tools below
+"aqua:trufflesecurity/trufflehog" = "3.99.8"
+"aqua:nodejs/node" = "24.22.2" # runtime for the npm-backed tools below
 # aqua has native binaries (oxc apps_v) but our pinned mise's baked registry can't resolve them yet, so use npm
-"npm:oxlint" = "1.89.0"
-"npm:oxfmt" = "0.74.0"
+"npm:oxlint" = "1.91.0"
+"npm:oxfmt" = "0.76.0"
 
 [settings]
 lockfile = true
