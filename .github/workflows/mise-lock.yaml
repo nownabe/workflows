@@ -24,7 +24,7 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4
         with:
-          version: 2026.10.18 # renovate:mise-version
+          version: 2026.11.0 # renovate:mise-version
           install: false
       - name: Check mise.lock covers mise.toml
         # Not `mise install --locked`: a version missing from mise.lock is only a
