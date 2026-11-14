@@ -1,5 +1,29 @@
 # Changelog
 
+## [2.1.1](https://github.com/nownabe/workflows/compare/v2.1.0...v2.1.1) (2026-11-14)
+
+
+### Dependencies
+
+* update dependency renovate to v44.214.0 ([#378](https://github.com/nownabe/workflows/issues/378)) ([de5568c](https://github.com/nownabe/workflows/commit/de5568ccb138fbd1b861b3719c848f96b8407050))
+* update dependency renovate to v44.220.0 ([#384](https://github.com/nownabe/workflows/issues/384)) ([bdb036e](https://github.com/nownabe/workflows/commit/bdb036e4ec2b2c5ec971aea788ca312c3d2d5bac))
+* update dependency renovate to v44.221.1 ([#385](https://github.com/nownabe/workflows/issues/385)) ([b8c3ae4](https://github.com/nownabe/workflows/commit/b8c3ae4d585316be7cec2ad7f67985d90ce3e520))
+* update dependency renovate to v44.221.2 ([#386](https://github.com/nownabe/workflows/issues/386)) ([9249b15](https://github.com/nownabe/workflows/commit/9249b151b888ff30c65b75d3d7b8b2c9b0e44888))
+* update dependency renovate to v44.222.0 ([#390](https://github.com/nownabe/workflows/issues/390)) ([b8265d9](https://github.com/nownabe/workflows/commit/b8265d96b16f62fa43df82950fa3fb8a9776fea4))
+* update dependency renovate to v44.222.2 ([#393](https://github.com/nownabe/workflows/issues/393)) ([7727e05](https://github.com/nownabe/workflows/commit/7727e05f3bc56b779b49aa389da100adbe2e1760))
+* update dependency renovate to v44.222.3 ([#394](https://github.com/nownabe/workflows/issues/394)) ([a9313d7](https://github.com/nownabe/workflows/commit/a9313d79cf2ac24f4fc6304b15883e023b684bf4))
+* update dependency renovate to v44.222.4 ([#395](https://github.com/nownabe/workflows/issues/395)) ([faa95df](https://github.com/nownabe/workflows/commit/faa95df548147016e90e37fa9dabdd7a918c3ca0))
+* update dependency renovate to v44.222.5 ([#396](https://github.com/nownabe/workflows/issues/396)) ([1ac76ce](https://github.com/nownabe/workflows/commit/1ac76ce37e0f31a8349db0485edb83a0ed4a9863))
+* update dependency renovate to v44.224.2 ([#401](https://github.com/nownabe/workflows/issues/401)) ([984775d](https://github.com/nownabe/workflows/commit/984775dce7d61626da7370c87c4638adb03f6864))
+* update dependency renovate to v44.225.1 ([#402](https://github.com/nownabe/workflows/issues/402)) ([a6b1713](https://github.com/nownabe/workflows/commit/a6b1713ef016ba27e4f9e1722d5e1470f16e6216))
+* update dependency renovate to v44.225.2 ([#403](https://github.com/nownabe/workflows/issues/403)) ([f0a9da1](https://github.com/nownabe/workflows/commit/f0a9da15b70f229497336e93c6ebb486e97ec73e))
+* update dependency renovate to v44.226.3 ([#406](https://github.com/nownabe/workflows/issues/406)) ([ff44969](https://github.com/nownabe/workflows/commit/ff4496900e2e544af4602f0f25a9ea37881d3335))
+* update dependency renovate to v44.227.4 ([#407](https://github.com/nownabe/workflows/issues/407)) ([90a9f39](https://github.com/nownabe/workflows/commit/90a9f399bb820e30d81430c994666fd96a47977f))
+* update dependency renovate to v44.230.1 ([#408](https://github.com/nownabe/workflows/issues/408)) ([11317f7](https://github.com/nownabe/workflows/commit/11317f7969acb691d2a4fc5e721c347e27103bc2))
+* update dependency renovate to v44.233.0 ([#410](https://github.com/nownabe/workflows/issues/410)) ([6548da2](https://github.com/nownabe/workflows/commit/6548da269a71843ea8ecd5d05d9f5a4291da368c))
+* update workflow pinned tools ([#383](https://github.com/nownabe/workflows/issues/383)) ([b126b34](https://github.com/nownabe/workflows/commit/b126b3486a2af22b3486fce5a1b1899c731a745f))
+* update workflow pinned tools ([#400](https://github.com/nownabe/workflows/issues/400)) ([0e340dc](https://github.com/nownabe/workflows/commit/0e340dc992a2a77bb1c4af22687dbce8a20b5df3))
+
 ## [2.1.0](https://github.com/nownabe/workflows/compare/v2.0.4...v2.1.0) (2026-11-07)
 
 
